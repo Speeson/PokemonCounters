@@ -1,11 +1,14 @@
 import TypeTileSmall from "./TypeTileSmall";
 
 export default function ResultsPanel({ selected, groups }) {
-  if (!selected.length) {
-    return null;
-  }
+  if (!selected.length) return null;
 
-  const hasWeakness = groups.x4.length || groups.x2.length;
+  const hasAny =
+    groups.x4.length ||
+    groups.x2.length ||
+    groups.x1_2.length ||
+    groups.x1_4.length ||
+    groups.x0.length;
 
   return (
     <div className="results">
@@ -31,9 +34,40 @@ export default function ResultsPanel({ selected, groups }) {
         </div>
       )}
 
-      {!hasWeakness && (
-        <p className="emptyText">No hay debilidades x2/x4 con esta combinación.</p>
+      {groups.x0.length > 0 && (
+        <div className="resultBlock">
+          <h3 className="resultTitle">x0</h3>
+          <div className="resultGrid">
+            {groups.x0.map((t) => (
+              <TypeTileSmall key={t} type={t} />
+            ))}
+          </div>
+        </div>
       )}
+
+      {groups.x1_2.length > 0 && (
+        <div className="resultBlock">
+          <h3 className="resultTitle">x1/2</h3>
+          <div className="resultGrid">
+            {groups.x1_2.map((t) => (
+              <TypeTileSmall key={t} type={t} />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {groups.x1_4.length > 0 && (
+        <div className="resultBlock">
+          <h3 className="resultTitle">x1/4</h3>
+          <div className="resultGrid">
+            {groups.x1_4.map((t) => (
+              <TypeTileSmall key={t} type={t} />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {!hasAny && <p className="emptyText">Sin resultados.</p>}
     </div>
   );
 }
