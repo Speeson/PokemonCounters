@@ -1,7 +1,11 @@
 ![tittle](src/assets/logo/pokemon-counters.png)
 
 
-[logo]: src/assets/logo/pokeball.png Pokémon Counters
+[logo]: 
+<h1 align="center">
+  <img src="src/assets/logo/pokeball.png" width="40" />
+  Counters
+</h1>
 
 Aplicación web interactiva para consultar de forma rápida y visual las **debilidades, resistencias e inmunidades de los tipos Pokémon**.
 
