@@ -1,3 +1,7 @@
+:root {
+  --neon-default: 0, 255, 200; /* fallback */
+}
+
 /* =========================
    LAYOUT GENERAL
    ========================= */
@@ -133,19 +137,25 @@
 
 /* Estado seleccionado: sin ring externo (no se solapa) */
 .typeTile.active {
-  border-color: rgba(0,0,0,0.22);
+  border-color: rgba(0,0,0,0.28);
   transform: translateY(-2px) scale(1.03);
-  animation: pop 180ms ease-out;
+  animation: pop 180ms ease-out, neonPulse 900ms ease-in-out 1;
 
-  /* Sombra + glow interior (NO invade otros botones) */
+  /* Glow persistente MÁS fuerte */
   box-shadow:
-    0 18px 30px rgba(0, 0, 0, 0.18),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.55),
-    inset 0 0 18px rgba(190, 2, 247, 0.637);
+    0 20px 34px rgba(0, 0, 0, 0.20),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.65),
+    inset 0 0 34px rgba(var(--neon), 0.85),
+    inset 0 0 80px rgba(var(--neon), 0.35);
 
-  /* Hace que el icono se vea más "vivo" */
-  filter: saturate(1.15) contrast(1.05);
+  filter: saturate(1.45) contrast(1.12) brightness(1.08);
+  animation: pop 180ms ease-out, neonPulse 420ms ease-out 1;
 }
+
+.typeTile.active .typeTileIcon {
+  filter: drop-shadow(0 0 10px rgba(var(--neon), 0.85));
+}
+
 
 /* Elimina totalmente los pseudo-elementos antiguos */
 .typeTile.active::after,
@@ -161,10 +171,12 @@
 
 .typeTileLabel {
   font-size: 12px;
+  font-weight: 700;           /* 👈 NEGRITA */
   text-transform: uppercase;
-  letter-spacing: 0.9px;
-  opacity: 0.9;
+  letter-spacing: 1px;
+  opacity: 0.95;
 }
+
 
 /* Badge 1 / 2 */
 .pickBadge {
@@ -237,10 +249,12 @@
 
 .weakTileLabel {
   font-size: 12px;
+  font-weight: 700;           /* 👈 NEGRITA */
   text-transform: uppercase;
-  letter-spacing: 0.9px;
-  opacity: 0.9;
+  letter-spacing: 1px;
+  opacity: 0.95;
 }
+
 
 .emptyText {
   text-align: center;
@@ -259,6 +273,35 @@
     transform: translateY(-2px) scale(1.04);
   }
 }
+
+@keyframes neonPulse {
+  0% {
+    box-shadow:
+      0 16px 26px rgba(0, 0, 0, 0.16),
+      inset 0 0 0 2px rgba(255, 255, 255, 0.60),
+      inset 0 0 18px rgba(var(--neon, var(--neon-default)), 0.45),
+      inset 0 0 50px rgba(var(--neon, var(--neon-default)), 0.18);
+  }
+
+  60% {
+    box-shadow:
+      0 24px 40px rgba(0, 0, 0, 0.24),
+      inset 0 0 0 2px rgba(255, 255, 255, 0.70),
+      inset 0 0 46px rgba(var(--neon, var(--neon-default)), 0.95),
+      inset 0 0 110px rgba(var(--neon, var(--neon-default)), 0.45);
+  }
+
+  100% {
+    /* IGUAL que el estado final de .typeTile.active */
+    box-shadow:
+      0 20px 34px rgba(0, 0, 0, 0.20),
+      inset 0 0 0 2px rgba(255, 255, 255, 0.65),
+      inset 0 0 34px rgba(var(--neon, var(--neon-default)), 0.85),
+      inset 0 0 80px rgba(var(--neon, var(--neon-default)), 0.35);
+  }
+}
+
+
 /* =========================
    LOGO RESPONSIVE
    ========================= */
