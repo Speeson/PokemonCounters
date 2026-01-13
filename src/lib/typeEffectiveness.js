@@ -17,19 +17,23 @@ export function computeDefensiveMultipliers(selectedTypes) {
   for (const atk of ALL_TYPES) {
     let mult = 1;
     for (const def of defs) mult *= effVs(def, atk);
-    // normaliza por si hay floats raros
     result[atk] = mult === 0 ? 0 : Math.round(mult * 100) / 100;
   }
 
   return result;
 }
 
-export function groupWeaknesses(multMap) {
-  const x4 = [];
-  const x2 = [];
+export function groupMultipliers(multMap) {
+  const groups = { x4: [], x2: [], x1_2: [], x1_4: [], x0: [] };
+
   for (const [type, mult] of Object.entries(multMap)) {
-    if (mult === 4) x4.push(type);
-    if (mult === 2) x2.push(type);
+    if (mult === 4) groups.x4.push(type);
+    else if (mult === 2) groups.x2.push(type);
+    else if (mult === 0.5) groups.x1_2.push(type);
+    else if (mult === 0.25) groups.x1_4.push(type);
+    else if (mult === 0) groups.x0.push(type);
   }
-  return { x4, x2 };
+
+  Object.values(groups).forEach(arr => arr.sort());
+  return groups;
 }

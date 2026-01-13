@@ -84,3 +84,10 @@
   font-size: 12px;
   letter-spacing: 0.5px;
 }
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0 16px 0;
+  user-select: none;
+}
