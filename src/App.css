@@ -1,42 +1,86 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 18px 0;
+  flex-wrap: wrap;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.label { font-weight: 600; }
+
+.btn {
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 10px;
+  margin: 12px 0 20px 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.typeBtn {
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.5px;
 }
 
-.card {
-  padding: 2em;
+.typeBtn.active {
+  border-color: #888;
+  background: #f3f3f3;
 }
 
-.read-the-docs {
-  color: #888;
+.section { margin: 12px 0; }
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  background: white;
+}
+
+.chipIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.chipText {
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.typeBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.typeIcon {
+  width: 26px;
+  height: 26px;
+}
+
+.typeText {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.5px;
 }

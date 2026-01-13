@@ -1,0 +1,22 @@
+{
+  "fire": {
+    "water": 2,
+    "ground": 2,
+    "rock": 2,
+    "fire": 0.5,
+    "grass": 0.5,
+    "ice": 0.5,
+    "bug": 0.5,
+    "steel": 0.5,
+    "fairy": 0.5
+  },
+  "flying": {
+    "electric": 2,
+    "ice": 2,
+    "rock": 2,
+    "grass": 0.5,
+    "fighting": 0.5,
+    "bug": 0.5,
+    "ground": 0
+  }
+}
