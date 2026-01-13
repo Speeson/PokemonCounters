@@ -136,7 +136,6 @@ http://localhost:5173
 
 ## 🎓 Contexto académico
 
-Proyecto desarrollado como **Trabajo de Fin de Grado (TFG)**  
 Ciclo formativo: **Desarrollo de Aplicaciones Multiplataforma (DAM)**
 
 ---
