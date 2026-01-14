@@ -414,9 +414,9 @@ html, body {
     background: rgba(0,0,0,0.18);
   }
 
-  /* Grid de tipos: 6 por fila */
+  /* Grid de tipos: 5 por fila */
   .typeGrid {
-    grid-template-columns: repeat(6, 1fr) !important;
+    grid-template-columns: repeat(5, 1fr) !important;
     gap: 8px;
   }
 
@@ -459,7 +459,7 @@ html, body {
 
   .resultGrid {
     display: grid;
-    grid-template-columns: repeat(6, 54px); /* más compacto */
+    grid-template-columns: repeat(5, 54px); /* más compacto */
     gap: 6px;
     justify-content: center;
   }
