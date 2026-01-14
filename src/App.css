@@ -349,3 +349,43 @@
   display: grid;
   gap: 18px;
 }
+
+/* =========================
+   MOBILE: 6 tipos por fila
+   ========================= */
+@media (max-width: 520px) {
+  /* Grid de tipos: 6 columnas */
+  .typeGrid {
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 8px;
+  }
+
+  /* Tiles más pequeños */
+  .typeTile {
+    min-height: 72px;
+    padding: 10px 6px;
+    border-radius: 14px;
+    gap: 6px;
+  }
+
+  /* Icono más pequeño */
+  .typeTileIcon {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Texto más pequeño */
+  .typeTileLabel {
+    font-size: 9px;
+    letter-spacing: 0.6px;
+  }
+
+  /* Badge más pequeño */
+  .pickBadge {
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    top: 6px;
+    right: 6px;
+  }
+}
