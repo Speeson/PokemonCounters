@@ -3,6 +3,12 @@
 *::after {
   box-sizing: border-box;
 }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  overflow-x: hidden; /* evita el desplazamiento lateral */
+}
 
 
 :root {
@@ -351,8 +357,10 @@
    MOBILE OVERRIDES
    ========================= */
 @media (max-width: 520px) {
-  /* Fondo móvil: pokeball rojo/blanco (evita negro) */
+  /* Fondo móvil: pokeball rojo/blanco */
   .page {
+    min-height: 100vh;
+    padding: 16px 12px;
     background: linear-gradient(
       to bottom,
       #e53935 0%,
@@ -360,28 +368,50 @@
       #ffffff 50%,
       #ffffff 100%
     );
-    padding: 16px 12px;
+    overflow-x: hidden;
   }
 
-  /* Logo MUCHO más pequeño */
+  /* Header centrado y logo MUY pequeño */
+  .header {
+    max-width: 480px;
+    margin: 0 auto 12px auto;
+  }
+
   .titleImage {
-    max-width: 120px;
+    width: auto;
+    max-width: 130px; /* pequeño de verdad */
     min-width: 0;
+    margin: 0 auto;
+    display: block;
   }
 
-  /* Paneles centrados y con ancho controlado */
-  
+  /* Layout centrado de verdad */
   .layout {
     width: 100%;
     max-width: 480px;
     margin: 0 auto;
     grid-template-columns: 1fr;
-    justify-items: stretch;
+    justify-items: center; /* centra los paneles */
+    gap: 14px;
   }
 
+  /* Paneles centrados y (IMPORTANTE) más claros para que se vea el blanco */
   .panel {
-    width: 100%;          /* llena el layout centrado */
-    margin: 0;            /* sin desplazamientos raros */
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.86); /* 👈 así el fondo blanco vuelve a verse */
+    border: 1px solid rgba(0,0,0,0.10);
+  }
+
+  /* Si aclaras panel, el texto de títulos mejor oscuro */
+  .panelTitle,
+  .resultTitle,
+  .resultSectionTitle {
+    color: rgba(0,0,0,0.85);
+  }
+  .panelTitle::after {
+    background: rgba(0,0,0,0.18);
   }
 
   /* Grid de tipos: 6 por fila */
@@ -390,7 +420,6 @@
     gap: 8px;
   }
 
-  /* Tiles de tipo más pequeños */
   .typeTile {
     min-height: 70px;
     padding: 10px 6px;
@@ -409,27 +438,36 @@
     letter-spacing: 0.6px;
   }
 
-  /* ✅ Quitar el badge 1/2 en móvil */
+  /* Quitar badge 1/2 en móvil */
   .pickBadge {
     display: none !important;
   }
 
+  /* Resultados: más juntos y mejor aprovechados */
+  .resultSectionBody {
+    gap: 10px;
+  }
+
+  .resultBlock {
+    gap: 8px;
+  }
+
   .resultGridWrap {
     display: flex;
-    justify-content: center; /* centra el bloque */
+    justify-content: center;
   }
 
   .resultGrid {
     display: grid;
-    grid-template-columns: repeat(6, 56px); /* tamaño fijo para que NO se pegue a la izquierda */
-    gap: 6px;                               /* más junto */
+    grid-template-columns: repeat(6, 54px); /* más compacto */
+    gap: 6px;
     justify-content: center;
   }
 
   .weakTile {
-    width: 56px;            /* igual que la columna */
-    min-height: 66px;
-    padding: 8px 4px;       /* más compacto */
+    width: 54px;
+    min-height: 64px;
+    padding: 8px 4px;
     border-radius: 12px;
     gap: 4px;
   }
@@ -441,17 +479,9 @@
 
   .weakTileLabel {
     font-size: 8px;
-    letter-spacing: 0.4px;
-  }
-  .header {
-    max-width: 480px;
-    margin: 0 auto 14px auto;
-  }
-
-  .titleImage {
-    display: block;
-    margin: 0 auto;
-    max-width: 200px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
   }
 }
+
 

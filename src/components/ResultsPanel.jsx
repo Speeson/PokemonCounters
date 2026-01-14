@@ -6,10 +6,14 @@ function ResultBlock({ title, types }) {
   return (
     <div className="resultBlock">
       <h3 className="resultTitle">{title}</h3>
-      <div className="resultGrid">
-        {types.map((t) => (
-          <TypeTileSmall key={t} type={t} />
-        ))}
+
+      {/* 👇 WRAPPER para centrar el grid */}
+      <div className="resultGridWrap">
+        <div className="resultGrid">
+          {types.map((t) => (
+            <TypeTileSmall key={t} type={t} />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -18,7 +22,8 @@ function ResultBlock({ title, types }) {
 export default function ResultsPanel({ selected, groups }) {
   if (!selected.length) return null;
 
-  const hasWeaknesses = (groups.x4?.length ?? 0) > 0 || (groups.x2?.length ?? 0) > 0;
+  const hasWeaknesses =
+    (groups.x4?.length ?? 0) > 0 || (groups.x2?.length ?? 0) > 0;
   const hasImmunities = (groups.x0?.length ?? 0) > 0;
   const hasResistances =
     (groups.x1_2?.length ?? 0) > 0 || (groups.x1_4?.length ?? 0) > 0;
@@ -39,7 +44,7 @@ export default function ResultsPanel({ selected, groups }) {
 
       {hasImmunities && (
         <div className="resultSection">
-          <h2 className="resultSectionTitle">Inmunity</h2>
+          <h2 className="resultSectionTitle">Immunity</h2>
           <div className="resultSectionBody">
             <ResultBlock title="x0" types={groups.x0} />
           </div>
@@ -60,4 +65,3 @@ export default function ResultsPanel({ selected, groups }) {
     </div>
   );
 }
-
