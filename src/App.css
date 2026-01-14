@@ -1,3 +1,9 @@
+@media (max-width: 520px) {
+  .typeGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 :root {
   --neon-default: 0, 255, 200; /* fallback */
 }
@@ -45,11 +51,6 @@
   gap: 18px;
 }
 
-@media (max-width: 900px) {
-  .layout {
-    grid-template-columns: 1fr;
-  }
-}
 
 /* =========================
    PANELES
@@ -363,21 +364,23 @@
 
   /* Logo MUCHO más pequeño */
   .titleImage {
-    max-width: 220px;
+    max-width: 120px;
     min-width: 0;
   }
 
   /* Paneles centrados y con ancho controlado */
+  
   .layout {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
     grid-template-columns: 1fr;
-    justify-items: center; /* centra cada panel */
-    gap: 14px;
+    justify-items: center;
   }
 
   .panel {
-    width: 100%;
-    max-width: 460px; /* centra y evita que "flote" raro */
-    padding: 14px;
+    width: calc(100% - 24px);
+    max-width: 480px;
   }
 
   /* Grid de tipos: 6 por fila */
@@ -410,33 +413,34 @@
     display: none !important;
   }
 
-  /* Debilidades: mismo formato que tipos (6 por fila) */
   .resultGridWrap {
-    text-align: center;
+    display: flex;
+    justify-content: center; /* centra el bloque */
   }
 
   .resultGrid {
-    display: inline-grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(6, 56px); /* tamaño fijo para que NO se pegue a la izquierda */
+    gap: 6px;                               /* más junto */
+    justify-content: center;
   }
 
-  /* Hacemos que weakTile parezca typeTile en móvil */
   .weakTile {
-    min-height: 70px;
-    padding: 10px 6px;
-    border-radius: 14px;
-    gap: 6px;
+    width: 56px;            /* igual que la columna */
+    min-height: 66px;
+    padding: 8px 4px;       /* más compacto */
+    border-radius: 12px;
+    gap: 4px;
   }
 
   .weakTileIcon {
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
   }
 
   .weakTileLabel {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.6px;
+    font-size: 8px;
+    letter-spacing: 0.4px;
   }
 }
+
