@@ -38,7 +38,6 @@ export default function App() {
         </section>
 
         <section className="panel">
-          <h2 className="panelTitle">Debilidades</h2>
           <ResultsPanel selected={selected} groups={groups} />
         </section>
       </main>

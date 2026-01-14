@@ -1,68 +1,57 @@
 import TypeTileSmall from "./TypeTileSmall";
 
+function ResultBlock({ title, types }) {
+  if (!types || types.length === 0) return null;
+
+  return (
+    <div className="resultBlock">
+      <h3 className="resultTitle">{title}</h3>
+      <div className="resultGrid">
+        {types.map((t) => (
+          <TypeTileSmall key={t} type={t} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function ResultsPanel({ selected, groups }) {
   if (!selected.length) return null;
 
-  const hasAny =
-    groups.x4.length ||
-    groups.x2.length ||
-    groups.x1_2.length ||
-    groups.x1_4.length ||
-    groups.x0.length;
+  const hasWeaknesses = (groups.x4?.length ?? 0) > 0 || (groups.x2?.length ?? 0) > 0;
+  const hasImmunities = (groups.x0?.length ?? 0) > 0;
+  const hasResistances =
+    (groups.x1_2?.length ?? 0) > 0 || (groups.x1_4?.length ?? 0) > 0;
+
+  const hasAny = hasWeaknesses || hasImmunities || hasResistances;
 
   return (
     <div className="results">
-      {groups.x4.length > 0 && (
-        <div className="resultBlock">
-          <h3 className="resultTitle">x4</h3>
-          <div className="resultGrid">
-            {groups.x4.map((t) => (
-              <TypeTileSmall key={t} type={t} />
-            ))}
+      {hasWeaknesses && (
+        <div className="resultSection">
+          <h2 className="resultSectionTitle">Debilidades</h2>
+          <div className="resultSectionBody">
+            <ResultBlock title="x4" types={groups.x4} />
+            <ResultBlock title="x2" types={groups.x2} />
           </div>
         </div>
       )}
 
-      {groups.x2.length > 0 && (
-        <div className="resultBlock">
-          <h3 className="resultTitle">x2</h3>
-          <div className="resultGrid">
-            {groups.x2.map((t) => (
-              <TypeTileSmall key={t} type={t} />
-            ))}
+      {hasImmunities && (
+        <div className="resultSection">
+          <h2 className="resultSectionTitle">Inmunidades</h2>
+          <div className="resultSectionBody">
+            <ResultBlock title="x0" types={groups.x0} />
           </div>
         </div>
       )}
 
-      {groups.x0.length > 0 && (
-        <div className="resultBlock">
-          <h3 className="resultTitle">x0</h3>
-          <div className="resultGrid">
-            {groups.x0.map((t) => (
-              <TypeTileSmall key={t} type={t} />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {groups.x1_2.length > 0 && (
-        <div className="resultBlock">
-          <h3 className="resultTitle">x1/2</h3>
-          <div className="resultGrid">
-            {groups.x1_2.map((t) => (
-              <TypeTileSmall key={t} type={t} />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {groups.x1_4.length > 0 && (
-        <div className="resultBlock">
-          <h3 className="resultTitle">x1/4</h3>
-          <div className="resultGrid">
-            {groups.x1_4.map((t) => (
-              <TypeTileSmall key={t} type={t} />
-            ))}
+      {hasResistances && (
+        <div className="resultSection">
+          <h2 className="resultSectionTitle">Resistencias</h2>
+          <div className="resultSectionBody">
+            <ResultBlock title="x1/2" types={groups.x1_2} />
+            <ResultBlock title="x1/4" types={groups.x1_4} />
           </div>
         </div>
       )}
