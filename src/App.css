@@ -94,11 +94,6 @@
   gap: 16px;
 }
 
-@media (max-width: 520px) {
-  .typeGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
 /* =========================
    BOTONES DE TIPO
@@ -351,41 +346,97 @@
 }
 
 /* =========================
-   MOBILE: 6 tipos por fila
+   MOBILE OVERRIDES
    ========================= */
 @media (max-width: 520px) {
-  /* Grid de tipos: 6 columnas */
+  /* Fondo móvil: pokeball rojo/blanco (evita negro) */
+  .page {
+    background: linear-gradient(
+      to bottom,
+      #e53935 0%,
+      #e53935 50%,
+      #ffffff 50%,
+      #ffffff 100%
+    );
+    padding: 16px 12px;
+  }
+
+  /* Logo MUCHO más pequeño */
+  .titleImage {
+    max-width: 220px;
+    min-width: 0;
+  }
+
+  /* Paneles centrados y con ancho controlado */
+  .layout {
+    grid-template-columns: 1fr;
+    justify-items: center; /* centra cada panel */
+    gap: 14px;
+  }
+
+  .panel {
+    width: 100%;
+    max-width: 460px; /* centra y evita que "flote" raro */
+    padding: 14px;
+  }
+
+  /* Grid de tipos: 6 por fila */
   .typeGrid {
     grid-template-columns: repeat(6, 1fr) !important;
     gap: 8px;
   }
 
-  /* Tiles más pequeños */
+  /* Tiles de tipo más pequeños */
   .typeTile {
-    min-height: 72px;
+    min-height: 70px;
     padding: 10px 6px;
     border-radius: 14px;
     gap: 6px;
   }
 
-  /* Icono más pequeño */
   .typeTileIcon {
     width: 30px;
     height: 30px;
   }
 
-  /* Texto más pequeño */
   .typeTileLabel {
     font-size: 9px;
+    font-weight: 700;
     letter-spacing: 0.6px;
   }
 
-  /* Badge más pequeño */
+  /* ✅ Quitar el badge 1/2 en móvil */
   .pickBadge {
-    width: 20px;
-    height: 20px;
-    font-size: 11px;
-    top: 6px;
-    right: 6px;
+    display: none !important;
+  }
+
+  /* Debilidades: mismo formato que tipos (6 por fila) */
+  .resultGridWrap {
+    text-align: center;
+  }
+
+  .resultGrid {
+    display: inline-grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+
+  /* Hacemos que weakTile parezca typeTile en móvil */
+  .weakTile {
+    min-height: 70px;
+    padding: 10px 6px;
+    border-radius: 14px;
+    gap: 6px;
+  }
+
+  .weakTileIcon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .weakTileLabel {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
   }
 }
