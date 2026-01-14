@@ -29,7 +29,7 @@ export default function ResultsPanel({ selected, groups }) {
     <div className="results">
       {hasWeaknesses && (
         <div className="resultSection">
-          <h2 className="resultSectionTitle">Debilidades</h2>
+          <h2 className="resultSectionTitle">Weaknesses</h2>
           <div className="resultSectionBody">
             <ResultBlock title="x4" types={groups.x4} />
             <ResultBlock title="x2" types={groups.x2} />
@@ -39,7 +39,7 @@ export default function ResultsPanel({ selected, groups }) {
 
       {hasImmunities && (
         <div className="resultSection">
-          <h2 className="resultSectionTitle">Inmunidades</h2>
+          <h2 className="resultSectionTitle">Inmunity</h2>
           <div className="resultSectionBody">
             <ResultBlock title="x0" types={groups.x0} />
           </div>
@@ -48,7 +48,7 @@ export default function ResultsPanel({ selected, groups }) {
 
       {hasResistances && (
         <div className="resultSection">
-          <h2 className="resultSectionTitle">Resistencias</h2>
+          <h2 className="resultSectionTitle">Resistances</h2>
           <div className="resultSectionBody">
             <ResultBlock title="x1/2" types={groups.x1_2} />
             <ResultBlock title="x1/4" types={groups.x1_4} />
@@ -56,7 +56,7 @@ export default function ResultsPanel({ selected, groups }) {
         </div>
       )}
 
-      {!hasAny && <p className="emptyText">Sin resultados.</p>}
+      {!hasAny && <p className="emptyText">No results.</p>}
     </div>
   );
 }

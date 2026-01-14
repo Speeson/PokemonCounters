@@ -32,7 +32,7 @@ export default function App() {
 
       <main className="layout">
         <section className="panel">
-          <h2 className="panelTitle">Elige tu tipo/s</h2>
+          <h2 className="panelTitle">Choose your type(s)</h2>
 
           <TypeGrid types={ALL_TYPES} selected={selected} onToggle={toggleType} />
         </section>
