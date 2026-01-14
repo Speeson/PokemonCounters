@@ -1,3 +1,10 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
 :root {
   --neon-default: 0, 255, 200; /* fallback */
 }
@@ -366,15 +373,15 @@
   
   .layout {
     width: 100%;
-    max-width: 520px;
+    max-width: 480px;
     margin: 0 auto;
     grid-template-columns: 1fr;
-    justify-items: center;
+    justify-items: stretch;
   }
 
   .panel {
-    width: calc(100% - 24px);
-    max-width: 480px;
+    width: 100%;          /* llena el layout centrado */
+    margin: 0;            /* sin desplazamientos raros */
   }
 
   /* Grid de tipos: 6 por fila */
@@ -435,6 +442,16 @@
   .weakTileLabel {
     font-size: 8px;
     letter-spacing: 0.4px;
+  }
+  .header {
+    max-width: 480px;
+    margin: 0 auto 14px auto;
+  }
+
+  .titleImage {
+    display: block;
+    margin: 0 auto;
+    max-width: 200px;
   }
 }
 
